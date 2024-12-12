@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bookstore - Homepage</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: none;
+        }
+        table {
+            width: 100%;
+            height: 100vh;
+            border-collapse: collapse;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            
+        }
+        nav a {
+            margin: 0 10px;
+            color: yellow;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #left {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 10px;
+            vertical-align: top;
+        }
+        #left a {
+            display: block;
+            margin: 10px 0;
+            color: #333;
+            text-decoration: none;
+        }
+        #left a:hover {
+            color: #4CAF50;
+        }
+        #right {
+            padding:20px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+      <td style="background-color:pink;">logo</td>
+      <td colspan="4" style="background-color: pink;">Website Name</td>
+
+        
+        <!-- Top Frame -->
+        <tr>
+            <td>
+
+                
+
+                    <h1  style=background-color: white;><a href='#'onclick="loadContent('home')"> home</a></h1>
+                  
+
+                        <th  style=background-color: white;><a href="#" onclick="loadContent('login')">Login</a></th>
+                        <th  style=background-color: white;><a href="#" onclick="loadContent('register')">Register</a></th>
+                        <th  style=background-color: white;><a href="#" onclick="loadContent('catalogue')">Catalogue</a></th>
+                        <th style=background-color: white;><a href="#" onclick="loadContent('cart')">Cart</a></th>
+                    
+        
+            </td>
+        </tr>
+
+        <!-- Left and Right Frames -->
+        <tr>
+            <td id="left">
+                <h4>Categories</h4>
+
+                <a>CSE</a>
+                <a>ECE</a>
+                <a>EEE</a>
+                <a>CIVIL</a>
+            </td>
+            <td id="right" colspan="5">
+                <p>Welcome to the online bookstore! Browse categories, explore new arrivals, and enjoy seamless shopping.</p>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        function loadContent(page) {
+            const content = {
+                home: "<p>Welcome to the homepage of our bookstore.</p>",
+                login: `
+                    <h2>Login</h2>
+                    <form>
+                        <label for='username'>User Name:</label><br>
+                        <input type='text' id='username' name='username'><br><br>
+                        <label for='password'>Password:</label><br>
+                        <input type='password' id='password' name='password'><br><br>
+                        <button type='submit'>Submit</button>
+                        <button type='reset'>Reset</button>
+                    </form>
+                `,
+                register: `
+                    <h2>Registration</h2>
+                    <form>
+                        <label for='name'>Name:</label><br>
+                        <input type='text' id='name' name='name'><br><br>
+                        <label for='email'>Email:</label><br>
+                        <input type='email' id='email' name='email'><br><br>
+                        <label for='password'>Password:</label><br>
+                        <input type='password' id='password' name='password'><br><br>
+                        <button type='submit'>Register</button>
+                    </form>
+                `,
+                catalogue: `
+                    <h2>Catalogue</h2>
+                    <table border='1' width='100%'>
+                        <tr>
+                            <th>Book Cover</th>
+                            <th>Book Name</th>
+                            <th>Author</th>
+                            <th>Publisher</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td><img src='https://tse2.mm.bing.net/th?id=OIP.zcyVgFRqoo9TQ3sH_9PjxAAAAA&pid=Api&P=0&h=180' width='200'></td>
+                            <td>XML Bible</td>
+                            <td>Winston</td>
+                            <td>Wiley</td>
+                            <td>$40.5</td>
+                            <td><button>Add to Cart</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src='https://tse2.mm.bing.net/th?id=OIP.qvhcmd-GbCm7CDbfUmF9LAHaE8&pid=Api&P=0&h=180' alt='Book Cover' width='200'></td>
+                            <td>AI</td>
+                            <td>S. Russel</td>
+                            <td>Prentice Hall</td>
+                            <td>$63</td>
+                            <td><button>Add to Cart</button></td>
+                        </tr>
+                    </table>
+                `,
+                cart: `
+                    <h2>Cart</h2>
+                    <table border='1' width='100%'>
+                        <tr>
+                            <th>Book Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                        </tr>
+                        <tr>
+                            <td>XML Bible</td>
+                            <td>$40.5</td>
+                            <td>1</td>
+                            <td>$40.5</td>
+                        </tr>
+                        <tr>
+                            <td>AI</td>
+                            <td>$63</td>
+                            <td>1</td>
+                            <td>$63</td>
+                        </tr>
+                        <tr>
+                            <td colspan='3' style='text-align:right;'>Total</td>
+                            <td>$103.5</td>
+                        </tr>
+                    </table>
+                `,
+                cse_books: "<p>Books for CSE</p>",
+                ece_books: "<p>Books for ECE</p>",
+                eee_books: "<p>Books for EEE</p>",
+                civil_books: "<p>Books for Civil</p>",
+            };
+
+            const contentArea = document.getElementById("right");
+            contentArea.innerHTML = content[page] || "<p>Content not found!</p>";
+        }
+    </script>
+</body>
+</html>
